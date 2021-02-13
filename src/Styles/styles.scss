@@ -1,0 +1,2506 @@
+$primaryGray: #383838;
+$secondaryGray: #444444;
+$tertiaryGray: #505050;
+$primaryWhite: #FFFFFF;
+$secondaryWhite: #f5f5f5;
+$primaryPurple: #9E7AE9;
+$secondaryPurple: #8768db;
+$tertiaryPurple: #7656cf;
+$primaryInProgress: #ff9f43;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+$primaryQuicksand: 'Quicksand', sans-serif;
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexStart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@mixin itemInProgress { 
+    background-color: rgba(255, 159, 67, .5);
+}
+
+@mixin quicksandWhite {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    letter-spacing: 1px;
+}
+
+::-webkit-scrollbar {
+    background-color: $secondaryWhite;
+    width: 12px;
+    height: 12px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primaryPurple;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $secondaryPurple;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: $primaryGray;
+}
+
+
+// App
+.App {
+    @include flexCenter();
+    height: 100vh;
+}
+
+
+// SignInPage
+.signInPageDiv {
+    @include flexCenter();
+    flex-wrap: wrap;
+    height: 80vh;
+    width: 300px;
+    max-width: 300px;
+}
+
+.needAnAccountDiv {
+    @include flexCenter;
+    align-self: flex-start;
+    height: 32px;
+    width: 90%;
+    font-size: .9rem;
+    font-family: $primaryQuicksand;
+    border-bottom: 1px solid;
+    position: absolute;
+    color: $primaryWhite;
+}
+
+.needAnAccountLink {
+    color: $primaryPurple;
+}
+
+.bugLogo {
+    display: flex;
+    height: 2.4rem;
+}
+
+.signInForm {
+    width: 100%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.signInForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.signInForm input {
+    display: block;
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+    letter-spacing: .3px;
+}
+
+.signInForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.signInForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.signInForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.signInForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.signInPageErrorDiv {
+    @include flexCenter();
+    height: 2.8rem;
+    width: 100%;
+    margin: -28px 0 0 0;
+    font-family: $primaryQuicksand;
+    font-size: .9rem;
+    color: $primaryWhite;
+}
+
+.signInForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.signInForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.signInForm button:focus {
+    outline: none;
+}
+
+.signInLink {
+    font-family: $primaryQuicksand;
+    color: $primaryPurple;
+}
+
+// SignUpPage
+.signUpPageDiv {
+    @include flexCenter();
+    flex-wrap: wrap;
+    height: 80vh;
+    width: 300px;
+    max-width: 300px;
+}
+
+.bugLogo {
+    display: flex;
+    height: 2.4rem;
+}
+
+.signUpForm {
+    width: 100%;
+    max-width: 100%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.signUpForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.lineDiv {
+    display: flex;
+    height: 1px;
+    width: 100%;
+    background-color: $primaryWhite;
+    margin-bottom: 20px;
+}
+
+
+.signUpForm input {
+    display: block;
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+    letter-spacing: .3px;
+}
+
+.signUpForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.signUpForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.signUpForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.signUpForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.signUpPageErrorDiv {
+    @include flexCenter();
+    height: 2.8rem;
+    width: 100%;
+    margin: -28px 0 0 0;
+    font-family: $primaryQuicksand;
+    font-size: .9rem;
+    color: $primaryWhite;
+}
+
+.signUpForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.signUpForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.signUpForm button:focus {
+    outline: none;
+    color: black;
+}
+
+.signUpLink {
+    font-family: $primaryQuicksand;
+    color: $primaryPurple;
+}
+
+
+// ForgotPasswordPage
+.forgotPasswordPageDiv {
+    @include flexCenter();
+    flex-wrap: wrap;
+    height: 80vh;
+    width: 300px;
+    max-width: 300px;
+}
+
+.bugLogo {
+    display: flex;
+    height: 2.4rem;
+}
+
+.forgotPasswordForm {
+    width: 100%;
+    max-width: 100%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.forgotPasswordForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.lineDiv {
+    display: flex;
+    height: 1px;
+    width: 100%;
+    background-color: $primaryWhite;
+    margin-bottom: 20px;
+}
+
+.forgotPasswordForm input {
+    display: block;
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+    letter-spacing: .3px;
+}
+
+.forgotPasswordForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.forgotPasswordForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.forgotPasswordForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.forgotPasswordForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.forgotPasswordErrorDiv {
+    @include flexCenter();
+    height: 2.8rem;
+    width: 100%;
+    margin: -28px 0 0 0;
+    font-family: $primaryQuicksand;
+    font-size: .9rem;
+    color: $primaryWhite;
+}
+
+.successResetPasswordDiv {
+    @include flexCenter();
+    height: 2.8rem;
+    width: 100%;
+    margin: -28px 0 0 0;
+    font-family: $primaryQuicksand;
+    font-size: .9rem;
+    color: $primaryWhite;
+}
+
+.forgotPasswordForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.forgotPasswordForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.forgotPasswordForm button:focus {
+    outline: none;
+    color: black;
+}
+
+.signUpLink {
+    font-family: $primaryQuicksand;
+    color: $primaryPurple;
+}
+
+
+// DashboardPage
+.dashboardPageDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.dashboardPageHeader {
+    background-color: $primaryPurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    font-family: $primaryQuicksand;
+    font-size: 1.6rem;
+    color: $primaryWhite;
+    align-self: flex-start;
+    position: absolute;
+}
+
+.dashboardHeaderItems {
+    height: 64px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bug {
+    height: 44px;
+    cursor: pointer;
+    top: 3px;
+    position: relative;
+}
+
+.projectNameMoreInfo {
+    @include flexCenter();
+    position: relative;
+}
+
+.moreInfoDiv {
+    @include flexCenter();
+    position: relative;
+    margin-left: 8px;
+    cursor: pointer;
+    display: flex;
+}
+
+.moreInfoIcon {
+    height: 14px;
+    cursor: pointer;
+}
+
+.moreInfoDropDown {
+    display: none;
+    position: relative;
+}
+
+.moreInfoDiv:hover .moreInfoDropDown {
+    background-color: $primaryPurple;
+    box-shadow: $secondaryGray;
+    height: 256px;
+    width: 400px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.moreInfoDropDownHeader {
+    @include itemInProgress();
+    background-color: $primaryWhite;
+    width: 100%;
+    height: 50px;
+    @include flexCenter();
+    flex-wrap: wrap;
+    position: absolute;
+    cursor: default;
+}
+
+.moreInfoHeaderItems {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 95%;
+}
+
+.bugBlackDropDown {
+    height: 32px;
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+}
+
+.arrowDiv {
+    @include flexCenter();
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+.arrowDiv img {
+    height: 16px;
+    z-index: 1;
+}
+
+.headerH1s {
+    display: flex;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    width: 120px;
+    height: 32px;
+    z-index: 2;
+}
+
+.headerH1s h1 {
+    display: flex;
+    color: black;
+    font-size: 1.6rem;
+}
+
+.moreInfoIconDropDown {
+    height: 32px;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.moreInfoHeaderItems p {
+    text-indent: '12px';
+}
+
+.firstSlide {
+    width: 95%;
+    display: flex;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.firstSlide p {
+    font-size: 1rem;
+}
+
+.introductionDiv {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.introductionDiv img {
+    height: 28px;
+    display: flex;
+    margin-right: 8px;
+}
+
+.introductionDiv h6 {
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.secondSlide {
+    width: 95%;
+    display: flex;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.secondSlide p {
+    font-size: 1rem;
+}
+
+.firstStepDiv {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.firstStepDiv img {
+    height: 28px;
+    display: flex;
+    margin-right: 8px;
+}
+
+.firstStepDiv h6 {
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.thirdSlide {
+    width: 95%;
+    display: flex;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.thirdSlide p {
+    font-size: 1rem;
+}
+
+.managingDiv {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.managingDiv img {
+    height: 28px;
+    display: flex;
+    margin-right: 8px;
+}
+
+.managingDiv h6 {
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.fourthSlide {
+    width: 95%;
+    display: flex;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.fourthSlide p {
+    font-size: 1rem;
+}
+
+.navigation {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.profileIcon {
+    height: 44px;
+    cursor: pointer;
+}
+
+.dashboardMarginDiv {
+    display: flex;
+    height: 100vh;
+    width: 95%;
+}
+
+.userInfoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 95%;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 64px;
+}
+
+.userInfoHeader p {
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    color: $primaryWhite;
+}
+
+.filterDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 20px;
+    width: 240px;
+}
+
+.filterDivSearchIcon img {
+    height: 1rem;
+    display: flex;
+    margin-right: 8px;
+}
+
+.filterDivInput {
+    width: 240px;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.filterDivInput input {
+    background-color: $secondaryWhite;
+    height: 100%;
+    width: 100%;
+    border-color: $primaryWhite;
+    color: $primaryWhite;
+    border: none;
+    border-radius: 4px;
+    padding: 0 0 0 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterDivInput input[type='text'] {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+}
+
+.filterDivInput input:hover {
+    background-color: $primaryPurple;
+}
+
+.filterDivInput input:hover::placeholder {
+    color: $primaryPurple;
+}
+
+.filterDivInput input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+    background-color: $primaryPurple;
+}
+
+.filterDivInput input:focus::placeholder {
+    color: $primaryPurple;
+}
+
+.filterDivInput input::placeholder {
+    color: black;
+}
+
+.addProjectSignOutDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    width: 95%;
+    position: absolute;
+    margin-top: 96px;
+}
+
+.addProjectLinkDiv {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 28px;
+    width: 88px;
+    border: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    background-color: $primaryPurple;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+}
+
+.addProjectLinkDiv:hover {
+    background-color: $secondaryPurple;
+}
+
+.addProjectLink {
+    text-decoration: none;
+    color: $primaryWhite;
+}
+
+.signOutButton {
+    height: 28px;
+    width: 76px;
+    border: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    background-color: $primaryPurple;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    color: $primaryWhite;
+    cursor: pointer;
+}
+
+.signOutButton:hover {
+    background-color: $secondaryPurple;
+}
+
+.signOutButton:focus {
+    outline: none;
+}
+
+.tableTitleDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    width: 95%;
+    position: absolute;
+    margin-top: 140px;
+}
+
+.tableTitleDiv h1 {
+    display: flex;
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    align-self: center;
+    justify-self: center;
+}
+
+.userTableDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userTableMarginDiv {
+    width: 95%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+.userTableMarginDiv table {
+    background-color: $primaryWhite;
+    align-self: flex-start;
+    width: 100%;
+    border: 0px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    margin-bottom: 64px;
+}
+
+.userTableMarginDiv table th {
+    align-items: center;
+    justify-content: center;
+    background-color: $secondaryPurple;
+    font-family: $primaryQuicksand;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $primaryWhite;
+    padding: 10px;
+}
+
+.userTableMarginDiv table td {
+    text-align: center;
+    font-family: $primaryQuicksand;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $primaryWhite;
+    padding: 10px;
+}
+
+.userTableMarginDiv table tr:nth-child(even) {
+    background-color: $primaryPurple;
+}
+
+.userTableMarginDiv table tr:nth-child(odd) {
+    background-color: $secondaryPurple;
+}
+
+.editProjectLinkDashboard {
+    text-decoration: none;
+}
+
+.editProjectLinkDashboard:hover {
+    text-decoration: underline;
+}
+
+.userTableDiv table tr button {
+    @include flexCenter();
+    height: 1.6rem;
+    text-decoration: none;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.userTableDiv table tr button:hover {
+    background-color: $secondaryWhite;
+}
+
+.userTableDiv table tr button:focus {
+    outline: none;
+    color: black;
+}
+
+.userTableDiv table tr:last-child td:last-child {
+    border-radius: 0 0 4px 0;
+}
+
+.userTableDiv table tr:last-child td:first-child {
+    border-radius: 0 0 0 4px;
+}
+
+
+// LoadingPage
+.loadingDiv {
+    @include flexCenter();
+    margin-bottom: 64px;
+}
+
+.loadingBug {
+    height: 8rem;
+}
+
+
+// AddProjectPage
+.addProjectDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 320px;
+}
+
+.headerDiv {
+    @include flexCenter();
+    align-self: flex-start;
+    justify-content: space-between;
+    height: 64px;
+    width: 95%;
+    position: absolute;
+}
+
+.headerDiv h2 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+}
+
+.headerDiv img {
+    height: 44px;
+}
+
+.addProjectForm {
+    width: 100%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.addProjectForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.addProjectForm input {
+    display: block;
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+    letter-spacing: .3px;
+}
+
+.addProjectForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.addProjectForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.addProjectForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.addProjectForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.addProjectForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.addProjectForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.addProjectForm button:focus {
+    outline: none;
+}
+
+
+// ProjectDetailsPage
+.projectDetailsDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.projectDetailsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primaryPurple;
+    height: 64px;
+    width: 100%;
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    align-self: flex-start;
+    position: absolute;
+    z-index: 1;
+}
+
+.projectDetailsItems { 
+    height: 100%;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.projectDetailsItems h1 {
+    font-weight: 500;
+    font-size: 1.6rem;
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+}
+
+.toEditProjectLink {
+    text-decoration: none;
+    color: $primaryWhite;
+    cursor: pointer;
+    font-family: $primaryQuicksand;
+    font-size: 1.6rem;
+    color: $primaryWhite;
+}
+
+.toEditProjectLink:hover {
+    text-decoration: underline;
+}
+
+.toDashboardBug {
+    height: 44px;
+    display: flex;
+}
+
+.projectDetailsMarginDiv {
+    display: flex;
+    height: 100vh;
+    width: 95%;
+}
+
+.projectDetailsID {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 95%;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 64px;
+    z-index: 1;
+}
+
+.projectDetailsID p {
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    color: $primaryWhite;
+}
+
+.projectCompletionDiv {
+    @include flexCenter();
+}
+
+.projectCompletionDiv img {
+    display: flex;
+    height: 1rem;
+    margin-left: 4px;
+}
+
+.managerOfProjectDiv {
+    @include flexCenter();
+}
+
+.managerOfProjectDiv img {
+    display: flex;
+    height: 1rem;
+    margin-left: 4px;
+}
+
+.editProjectCurrentMembers {
+    @include flexCenter();
+}
+
+.editProjectCurrentMembers img {
+    height: 14px;
+    margin-right: 4px;
+}
+
+.editProjectCurrentBugs {
+    @include flexCenter();
+}
+
+.editProjectCurrentBugs img {
+    height: 16px;
+    margin-right: 4px;
+}
+
+.editProjectLink {
+    text-decoration: none;
+    color: $primaryWhite;
+    cursor: pointer;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    color: $primaryWhite;
+}
+
+.editProjectLink:hover {
+    text-decoration: underline;
+}
+
+.projectDetailsCurrentMembers {
+    @include flexCenter();
+    width: 50%;
+    margin-right: 12px;
+}
+
+.projectDetailsCurrentMembersDiv {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.projectDetailsMembersTitleDiv {
+    display: flex;
+    position: absolute;
+    align-self: flex-start;
+    margin-top: 140px;
+}
+
+.projectDetailsMembersTitleDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.currentMembersCards {
+    width: 80%;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-items: center;
+    margin-top: 204px;
+    position: absolute;
+    height: 360px;
+}
+
+.currentMemberDiv {
+    border: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    background-color: $primaryPurple;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.currentEditDeleteIconBug {
+    @include flexCenter();
+    justify-content: flex-end;
+    align-items: center;
+    width: 120px;
+}
+
+.currentEditDeleteIconBug p {
+    display: flex;
+    text-decoration: none;
+}
+
+.currentEditDeleteIconBug img {
+    display: flex;
+    height: 20px;
+}
+
+.toEditBugLink {
+    text-decoration: none;
+    color: $primaryWhite;
+    cursor: pointer;
+    font-family: $primaryQuicksand;
+    font-size: 1.2rem;
+    color: $primaryWhite;
+    display: flex;
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.toEditBugLink:hover {
+    text-decoration: underline;
+}
+
+.notAllowedBugLink {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.projectDetailsCurrentBugs {
+    @include flexCenter();
+    width: 80%;
+    margin-left: 12px;
+}
+
+.projectDetailsCurrentBugsDiv {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.projectDetailsBugsTitleDiv {
+    display: flex;
+    position: absolute;
+    align-self: flex-start;
+    margin-top: 140px;
+}
+
+.projectDetailsBugsTitleDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.currentBugsCards {
+    width: 80%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: flex-start;
+    margin-top: 204px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 360px;
+    overflow-y: auto;
+}
+
+
+// EditProjectPage
+.editProjectPageDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.projectHeaderDiv {
+    @include flexCenter();
+    height: 64px;
+    width: 100%;
+    font-family: $primaryQuicksand;
+    background-color: $primaryPurple;
+    align-self: flex-start;
+}
+
+.editProjectHeaderItems {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 64px;
+    width: 95%;
+    z-index: 1;
+}
+
+.editProjectHeaderItems img {
+    display: flex;
+    height: 44px;
+}
+
+.editProjectHeaderItems h1 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;;
+}
+
+.projectDetailsLink {
+    text-decoration: none;
+    color: $primaryWhite;
+    cursor: pointer;
+    font-family: $primaryQuicksand;
+    font-size: 1.6rem;
+    color: $primaryWhite;
+}
+
+.projectDetailsLink:hover {
+    text-decoration: underline;
+}
+
+.editProjectMarginDiv {
+    display: flex;
+    width: 95%;
+    height: 100%;
+    align-self: flex-start;
+    position: absolute;
+}
+
+.editProjectID { 
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 64px;
+}
+
+.editProjectID p {
+    display: flex;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    font-weight: 500;
+    color: $primaryWhite;
+}
+
+.projectManagerDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    margin-left: auto;
+}
+
+.projectManagerDiv p {
+    display: flex;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    font-weight: 500;
+    color: $primaryWhite;
+}
+
+.projectManagerDiv img {
+    display: flex;
+    height: 1rem;
+    margin-left: 4px;
+}
+
+.dateCreatedDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    margin-left: auto;
+}
+
+.dateCreatedDiv p {
+    display: flex;
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    font-weight: 500;
+    color: $primaryWhite;
+}
+
+.markCompleteDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.markCompleteDiv p {
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-right: 3px;
+}
+
+.markCompleteDiv img {
+    display: flex;
+    height: 1rem;
+    margin-left: 3px;
+}
+
+.membersDiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    margin-right: 1.3%;
+    margin-top: 108px;
+    position: relative;
+}
+
+.membersTitleDiv {
+    margin-top: 20px;
+}
+
+.membersTitleDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.addMemberFormDiv {
+    @include flexCenter();
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 76px;
+}
+
+.addMemberForm {
+    width: 80%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.addMemberForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.addMemberForm input {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+}
+
+.addMemberForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.addMemberForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.addMemberForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.addMemberForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.addMemberForm select {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 4px;
+    color: $primaryWhite;
+    cursor: pointer;
+    outline: none;
+    font-family: $primaryQuicksand;
+}
+
+
+.addMemberForm select:hover {
+    background-color: $secondaryPurple;
+}
+
+.addMemberForm select:focus {
+    border-color: $primaryGray;
+}
+
+.addMemberForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.addMemberForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.addMemberForm button:focus {
+    outline: none;
+}
+
+.currentMembersDiv {
+    width: 80%;
+    position: absolute;
+    margin-top: 468px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.currentMembersDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-size: 2rem;
+}
+
+.currentMembers {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-top: 20px;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.memberDiv {
+    border: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    background-color: $primaryPurple;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.memberNameDiv {
+    background-color: $secondaryPurple;
+    border-radius: 4px;
+    height: 34px;
+    display: flex;
+    padding: 0 12px 0 12px;
+    height: 40px;
+    order: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.memberNameDiv h2 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    display: flex;
+}
+
+.deleteMember {
+    @include flexCenter();
+    justify-content: flex-end;
+    width: 120px;
+}
+
+.deleteMember button {
+    @include flexCenter();
+    height: 1.2rem;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    justify-self: flex-end;
+}
+
+.deleteMember button:hover {
+    background-color: $secondaryWhite;
+}
+
+.deleteMember button:focus {
+    outline: none;
+}
+
+.deleteMember img {
+    height: 20px;
+    margin-left: 10px;
+}
+
+.memberAddedDiv {
+    margin-top: 4px;
+    height: 22px;
+    display: flex;
+    order: 1;
+    align-items: center;
+    padding: 0 0 0 12px;
+}
+
+.memberAddedDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.memberUIDDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 2;
+    padding: 0 0 0 12px;
+}
+
+.memberUIDDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.assignedProjectDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 3;
+    padding: 0 0 0 12px;
+}
+
+.assignedProjectDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.bugsDiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    margin-right: 1.3%;
+    margin-top: 108px;
+    position: relative;
+}
+
+.bugsTitleDiv {
+    margin-top: 20px;
+}
+
+.bugsTitleDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.addBugFormDiv {
+    @include flexCenter();
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 76px;
+}
+
+.addBugForm {
+    width: 80%;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.addBugForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.addBugForm input {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+}
+
+.addBugForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.addBugForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.addBugForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.addBugForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 6px 0px;
+    color: $primaryWhite;
+}
+
+.addBugForm select {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 4px;
+    color: $primaryWhite;
+    cursor: pointer;
+    outline: none;
+    font-family: $primaryQuicksand;
+}
+
+.addBugForm select:hover {
+    background-color: $secondaryPurple;
+}
+
+.addBugForm select:focus {
+    border-color: $primaryGray;
+}
+
+.addBugForm textarea {
+    background-color: $primaryPurple;
+    height: 3.6rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+}
+
+.addBugForm textarea[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.addBugForm textarea:hover {
+    background-color: $secondaryPurple;
+}
+
+.addBugForm textarea:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.addBugForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.addBugForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.addBugForm button:focus {
+    outline: none;
+}
+
+.currentBugsDiv {
+    width: 80%;
+    position: absolute;
+    margin-top: 668px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.currentBugsDiv p {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    font-size: 2rem;
+}
+
+.currentBugs {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 300px;
+    margin-top: 20px;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.bugDiv {
+    border: 2px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: $primaryWhite;
+    background-color: $primaryPurple;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 188px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bugNameDiv {
+    background-color: $secondaryPurple;
+    border-radius: 4px;
+    height: 34px;
+    display: flex;
+    padding: 0 12px 0 12px;
+    height: 40px;
+    order: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bugNameDiv h2 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    display: flex;
+}
+
+.editDeleteIconBug {
+    @include flexCenter();
+    justify-content: space-between;
+    width: 128px;
+}
+
+.editDeleteIconBug h2 {
+    font-size: 1rem;
+}
+
+.editDeleteIconBug button {
+    @include flexCenter();
+    height: 1.2rem;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    justify-self: flex-end;
+}
+
+.editDeleteIconBug button:hover {
+    background-color: $secondaryWhite;
+}
+
+.editDeleteIconBug button:focus {
+    outline: none;
+}
+
+.editDeleteIconBug img {
+    height: 20px;
+}
+
+.bugNameDivLink {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    text-decoration: none;
+}
+
+.bugNameDivLink:hover {
+    text-decoration: underline;
+}
+
+.shortDescription {
+    width: 95%;
+    margin-top: 4px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 1;
+    padding: 0 0 0 12px;
+}
+
+.shortDescription p {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+    overflow-x: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.priorityDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 2;
+    padding: 0 0 0 12px;
+}
+
+.priorityDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.completedDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 3;
+    padding: 0 0 0 12px;
+}
+
+.completedDivItems {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.completedDivItems h4 {
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+    display: flex;
+    font-weight: 500;
+    font-size: .8rem;
+    
+}
+
+.completedDivItems img {
+    margin-left: 4px;
+    height: 16px;
+    display: flex;
+}
+
+
+.bugAddedDiv {
+    height: 22px;
+    display: flex;
+    order: 4;
+    align-items: center;
+    padding: 0 0 0 12px;
+}
+
+.bugAddedDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.bugIDDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 5;
+    padding: 0 0 0 12px;
+}
+
+.bugIDDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.assignedMemberDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 6;
+    padding: 0 0 0 12px;
+}
+
+.assignedMemberDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+
+// EditBugPage
+.editBugDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.editBugHeader {
+    background-color: $primaryPurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    font-family: $primaryQuicksand;
+    font-size: 1.6rem;
+    color: $primaryWhite;
+    align-self: flex-start;
+    position: absolute;
+}
+
+.editBugItems { 
+    height: 100%;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    z-index: 1;
+}
+
+.editBugItems h1 {
+    font-weight: 500;
+    font-size: 1.6rem;
+    font-family: $primaryQuicksand;
+    color: $primaryWhite;
+}
+
+.toBugDetailsLink {
+    text-decoration: none;
+    color: $primaryWhite;
+    cursor: pointer;
+    font-family: $primaryQuicksand;
+    font-size: 1.6rem;
+    color: $primaryWhite;
+}
+
+.toBugDetailsLink:hover {
+    text-decoration: underline;
+}
+
+.toDashboardBug {
+    height: 44px;
+    display: flex;
+}
+
+.editBugMarginDiv {
+    display: flex;
+    height: 100vh;
+    width: 95%;
+    position: absolute;
+    justify-content: center;
+}
+
+.editBugInfoDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 64px;
+}
+
+.editBugInfoDiv p {
+    font-family: $primaryQuicksand;
+    font-size: .8rem;
+    color: $primaryWhite;
+    display: flex;
+}
+
+.dateAddedToProject {
+    display: flex;
+}
+
+.setBugCompletion {
+    display: flex;
+    align-items: center;
+}
+
+.setBugCompletion img {
+    display: flex;
+    height: 1rem;
+    margin-left: 6px;
+}
+
+.editBugFormDiv {
+    @include flexCenter();
+    top: 164px;
+    position: absolute;
+}
+
+.editBugForm {
+    width: 100%;
+    max-width: 400px;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 64px;
+}
+
+.editBugForm h1 {
+    @include quicksandWhite();
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.editBugForm input {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+}
+
+.editBugForm input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.editBugForm input:hover {
+    background-color: $secondaryPurple;
+}
+
+.editBugForm input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.editBugForm label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    font-family: $primaryQuicksand;
+    margin: 0px 0px 12px 0px;
+    color: $primaryWhite;
+}
+
+.editBugForm select {
+    background-color: $primaryPurple;
+    height: 2.4rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 4px;
+    color: $primaryWhite;
+    cursor: pointer;
+    outline: none;
+    font-family: $primaryQuicksand;
+}
+
+.editBugForm select:hover {
+    background-color: $secondaryPurple;
+}
+
+.editBugForm select:focus {
+    border-color: $primaryGray;
+}
+
+.editBugForm textarea {
+    background-color: $primaryPurple;
+    height: 3.6rem;
+    width: 100%;
+    margin: 0px 0px 28px 0px;
+    border: 1px;
+    border-color: $primaryWhite;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    color: $primaryWhite;
+}
+
+.editBugForm textarea[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.editBugForm textarea:hover {
+    background-color: $secondaryPurple;
+}
+
+.editBugForm textarea:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.editBugForm textarea::placeholder {
+    color: $primaryWhite;
+}
+
+.editBugForm textarea:focus::placeholder {
+    color: transparent;
+}
+
+.editBugForm button {
+    @include flexCenter();
+    height: 2.4rem;
+    width: 100%;
+    background-color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.editBugForm button:hover {
+    background-color: $secondaryWhite;
+}
+
+.editBugForm button:focus {
+    outline: none;
+}
+
+
+// bugDetailsPageDiv
+.bugDetailsPageDiv {
+    height: 100vh;
+    width: 100%;
+}
+
+.chatIcon {
+    height: 36px;
+}
+
+.bugDetailsChatDiv {
+    @include flexCenter();
+    position: sticky;
+    margin: auto;
+    margin-top: 164px;
+    top: 0; bottom: 0; left: 0; right: 0;
+    width: 360px;
+    height: 480px;
+}
+
+.bugDetailsChatApp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $primaryPurple;
+    border: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: $primaryWhite;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.userName {
+    @include flexCenter();
+    width: 100%;
+    margin-top: 14px;
+    position: absolute;
+    top: 0;
+}
+
+.userName p {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-size: 2rem;
+}
+
+.whereMessagesWillGo {
+    width: 100%;
+    background-color: $secondaryPurple;
+    height: 70%;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.textISent {
+    background-color: $primaryPurple;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    width: 240px;
+    padding: 8px;
+}
+
+.textISent p {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-size: 1rem;
+}
+
+.submitNewMessageDiv {
+    @include flexCenter();
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    padding: 16px;
+    margin-bottom: 10px;
+}
+
+.submitNewMessageDiv input {
+    display: flex;
+    background-color: $secondaryPurple;
+    height: 2.6em;
+    width: 95%;
+    padding: 8px;
+    color: $primaryWhite;
+    border: none;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.submitNewMessageDiv input::placeholder {
+    color: $primaryWhite;
+}
+
+.submitNewMessageDiv input[type='text'] {
+    font-family: $primaryQuicksand;
+}
+
+.submitNewMessageDiv input:hover {
+    background-color: $tertiaryPurple;
+}
+
+.submitNewMessageDiv input:focus {
+    outline: none !important;
+    border-color: $primaryGray;
+    color: $primaryWhite;
+}
+
+.submitNewMessageDiv input:focus::placeholder {
+    color: transparent;
+}
+
+.submitNewMessageDiv button {
+    border: none;
+    background: none;
+    border-radius: 4px;
+}
+
+.submitNewMessageDiv button:focus {
+    outline: none;
+}
+
+.submitNewMessageDiv button:hover {
+    background-color: $secondaryPurple;
+}
+
+.submitNewMessageDiv button p {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-size: 1rem;
+}
+
+// ProfilePage
+.profilePageDiv {
+    @include flexCenter();
+    height: 100vh;
+    width: 100%;
+}
+
+.profilePageForm {
+    width: 360px;
+    display: flex;
+}
+
+// Footer
+.footerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+    font-family: $primaryQuicksand;
+    font-weight: 600;
+    align-self: flex-end;
+    border: none;
+    position: absolute;
+    color: $primaryWhite;
+}
+
+.footerDiv p {
+    margin: 0 36px 0 36px;
+    font-size: .8rem;
+}
