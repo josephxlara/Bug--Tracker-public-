@@ -49,6 +49,7 @@ function App() {
               <Route exact path='/' component={SignInPage} />
               <Route exact path='/signup' component={SignUpPage} />
               <Route exact path='/forgotpassword' component={ForgotPasswordPage} />
+              <Route exact path='*' component={() => {'404 PAGE NOT FOUND'}} />
             </Switch>
           </PropProvider>
         </Router>
