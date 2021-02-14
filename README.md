@@ -1,0 +1,1 @@
+Bug--Tracker is a full-stack application which allows users to manage their own coding project's bugs, or issues. The application utilizes Firebase's Real-Time Database on the backend and React.js on the frontend. For inquiries, please email: josephlara905@gmail.com.
