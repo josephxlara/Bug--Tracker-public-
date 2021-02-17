@@ -1,6 +1,6 @@
 // General Imports
 import React, { createContext, useState, useEffect } from 'react';
-import { fireBaseAuthorize, fireBaseDatabase } from '../Firebase';
+import { fireBaseAuthorize, fireBaseDatabase, googleProvider } from '../Firebase';
 import { useHistory } from 'react-router-dom';
 import nanoid from 'nanoid';
 import axios from 'axios';
@@ -28,8 +28,8 @@ export default function PropProvider(props) {
     const history = useHistory();
 
     // User Authentication Methods
-    const signIn = (email, password) => {
-        return fireBaseAuthorize.signInWithEmailAndPassword(email, password);
+    const signIn = async () => {
+        return await fireBaseAuthorize.signInWithPopup(googleProvider);
     }
 
     const signUp = (email, password) => {

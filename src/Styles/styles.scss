@@ -162,7 +162,7 @@ body {
 
 .signInForm button {
     @include flexCenter();
-    height: 2.4rem;
+    height: 2.8rem;
     width: 100%;
     background-color: $primaryWhite;
     font-family: $primaryQuicksand;
@@ -170,6 +170,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     color: black;
+    position: relative;
 }
 
 .signInForm button:hover {
@@ -180,121 +181,18 @@ body {
     outline: none;
 }
 
-.signInLink {
-    font-family: $primaryQuicksand;
-    color: $primaryPurple;
-}
-
-// SignUpPage
-.signUpPageDiv {
-    @include flexCenter();
-    flex-wrap: wrap;
-    height: 80vh;
-    width: 300px;
-    max-width: 300px;
-}
-
-.bugLogo {
-    display: flex;
-    height: 2.4rem;
-}
-
-.signUpForm {
-    width: 100%;
-    max-width: 100%;
-    background-color: $primaryPurple;
-    border: 2px;
-    border-color: $primaryWhite;
-    border-style: solid;
-    border-radius: 4px;
-    padding: 20px;
-}
-
-.signUpForm h1 {
-    @include quicksandWhite();
+.signInForm button p {
     font-weight: 500;
-    margin-bottom: 8px;
 }
 
-.lineDiv {
-    display: flex;
-    height: 1px;
-    width: 100%;
-    background-color: $primaryWhite;
-    margin-bottom: 20px;
+.googleFavicon {
+    height: 28px;
+    position: absolute;
+    left: 0;
+    margin-left: 12px;
 }
 
-
-.signUpForm input {
-    display: block;
-    background-color: $primaryPurple;
-    height: 2.4rem;
-    width: 100%;
-    margin: 0px 0px 28px 0px;
-    border: 1px;
-    border-color: $primaryWhite;
-    border-style: solid;
-    border-radius: 4px;
-    padding: 8px;
-    color: $primaryWhite;
-    letter-spacing: .3px;
-}
-
-.signUpForm input[type='text'] {
-    font-family: $primaryQuicksand;
-}
-
-.signUpForm input:hover {
-    background-color: $secondaryPurple;
-}
-
-.signUpForm input:focus {
-    outline: none !important;
-    border-color: $primaryGray;
-    color: $primaryWhite;
-}
-
-.signUpForm label {
-    display: block;
-    font-size: .9rem;
-    font-weight: 600;
-    font-family: $primaryQuicksand;
-    margin: 0px 0px 6px 0px;
-    color: $primaryWhite;
-}
-
-.signUpPageErrorDiv {
-    @include flexCenter();
-    height: 2.8rem;
-    width: 100%;
-    margin: -28px 0 0 0;
-    font-family: $primaryQuicksand;
-    font-size: .9rem;
-    color: $primaryWhite;
-}
-
-.signUpForm button {
-    @include flexCenter();
-    height: 2.4rem;
-    width: 100%;
-    background-color: $primaryWhite;
-    font-family: $primaryQuicksand;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: black;
-}
-
-.signUpForm button:hover {
-    background-color: $secondaryWhite;
-}
-
-.signUpForm button:focus {
-    outline: none;
-    color: black;
-}
-
-.signUpLink {
+.signInLink {
     font-family: $primaryQuicksand;
     color: $primaryPurple;
 }

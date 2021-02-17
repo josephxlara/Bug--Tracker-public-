@@ -1,12 +1,14 @@
 // General Imports
-import React, { useContext, } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 // Context Import
 import { bugTrackerPropProvider } from '../Contexts/Context'
 
 // SVG Imports
 import BugLogo from '../SVGs/Bug--TrackerLogo.svg'
+import GoogleFavicon from '../SVGs/GoogleFavicon.svg'
+import LoadingPage from './LoadingPage';
 
 
 export default function SignInPage() {
@@ -16,14 +18,37 @@ export default function SignInPage() {
      */
     const { signIn } = useContext(bugTrackerPropProvider);
 
-    return (
+    const history = useHistory();
+
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        try {
+            setLoading(true);
+            signIn();
+            history.push('/dashboard');
+            setLoading(false);
+        }
+
+        catch {
+            setLoading(true);
+            setError('Failed to sign in!');
+            setLoading(false);
+
+        }
+    }
+
+    return loading ? <LoadingPage /> : (
         <>
             <div className='needAnAccountDiv'>
-                Don't have an account? Be sure to create one with Google, &nbsp;<a href='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp' className='needAnAccountLink'>here!</a>
+                Don't have a Google account? Be sure to create one, &nbsp;<a href='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp' className='needAnAccountLink'>here!</a>
             </div>
             <div className='signInPageDiv' >
                 <img className='bugLogo' src={BugLogo} alt='BugLogo' />
-                <form className='signInForm' >
+                <form className='signInForm' onSubmit={handleSubmit}>
                     
                     <h1 >
                         Sign-In
@@ -31,9 +56,12 @@ export default function SignInPage() {
                     
                     <div className='lineDiv' />
                     
-                    <button type='submit' onClick={signIn}>
-                        Sign-In
+                    <button type='submit' >
+                        <img src={GoogleFavicon} alt='googleFavicon' className='googleFavicon' />
+                        <p>Sign in with Google</p>
                     </button>
+
+                    {error && <div className='signInPageErrorDiv'> {error} </div>}
 
                 </form>
                 <Link className='signInLink' to='forgotpassword'>Forgot your password?</Link>

@@ -242,7 +242,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className='tableTitleDiv'>
-                    <h1>{currentUser.email}'s Current Projects</h1>
+                    <h1>{currentUser.displayName}'s Current Projects</h1>
                 </div>
 
                 <div className='userTableDiv'>
