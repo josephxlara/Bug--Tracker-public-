@@ -51,7 +51,7 @@ export default function SignInPage() {
                 <form className='signInForm' onSubmit={handleSubmit}>
                     
                     <h1 >
-                        Sign-In
+                        Sign In
                     </h1>
                     
                     <div className='lineDiv' />
