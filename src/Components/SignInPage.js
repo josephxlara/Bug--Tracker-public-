@@ -23,12 +23,12 @@ export default function SignInPage() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             setLoading(true);
-            signIn();
+            await signIn();
             history.push('/dashboard');
             setLoading(false);
         }
