@@ -50,6 +50,7 @@ export default function SignInPage() {
             setLoading(false);
         
         } catch {
+            setLoading(false);
             setError('Failed to sign in!');
         }
     }
