@@ -9,7 +9,6 @@ import PropProvider from './Contexts/Context';
 // Component Imports
 import SignInPage from './Components/SignInPage';
 import DashboardPage from './Components/DashboardPage';
-import SignUpPage from './Components/SignUpPage';
 import PrivateRoute from './Components/PrivateRoute';
 import AddProjectPage from './Components/AddProjectPage'
 import LoadingPage from './Components/LoadingPage';
@@ -47,7 +46,6 @@ function App() {
               <PrivateRoute exact path='/editbug' component={EditBugPage} />
               <PrivateRoute exact path='/profile' component={ProfilePage} />
               <Route exact path='/' component={SignInPage} />
-              <Route exact path='/signup' component={SignUpPage} />
               <Route exact path='/forgotpassword' component={ForgotPasswordPage} />
               <Route exact path='*' component={() => {'404 PAGE NOT FOUND'}} />
             </Switch>

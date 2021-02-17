@@ -1,10 +1,6 @@
 // General Imports
-import React, { useContext, useState, useRef, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { fireBaseAuthorize } from '../Firebase';
-
-// Component Imports
-import LoadingPage from './LoadingPage';
+import React, { useContext, } from 'react';
+import { Link } from 'react-router-dom';
 
 // Context Import
 import { bugTrackerPropProvider } from '../Contexts/Context'
@@ -18,51 +14,16 @@ export default function SignInPage() {
      * * State constants from context provider:
      * * signIn --> main purpose: sign user in to application (method from firebase auth)
      */
-    const { signIn, setCurrentUser, currentUser } = useContext(bugTrackerPropProvider);
+    const { signIn } = useContext(bugTrackerPropProvider);
 
-    /**
-     * * Component's state constants:
-     * * error --> only purpose: to display error if unsuccessful sign in submission
-     * * loading --> set loading to true while data from database hasn't finished being retrieved yet
-     */
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-
-    // Constants used to capture user's input in new project form
-    const emailRef = useRef();
-    const passwordRef = useRef();
-
-    // Constant used to push user back to dashboard upon submission of new project form
-    const history = useHistory();
-
-    /**
-     * * Async function created to sign user in
-     */
-    const handleSubmit = async (e) => {
-        e.preventDefault();
- 
-        setError('');
-
-        try {
-            setLoading(true);
-            await signIn(emailRef.current.value, passwordRef.current.value);
-            history.push('/dashboard');
-            setLoading(false);
-        
-        } catch {
-            setLoading(false);
-            setError('Failed to sign in!');
-        }
-    }
-
-    return loading ? <LoadingPage /> : (
+    return (
         <>
             <div className='needAnAccountDiv'>
-                Don't have an account? Click&nbsp;<Link to='/signup' className='needAnAccountLink'>here!</Link>
+                Don't have an account? Be sure to create one with Google, &nbsp;<a href='https://accounts.google.com/signup/v2/webcreateaccount?hl=en&flowName=GlifWebSignIn&flowEntry=SignUp' className='needAnAccountLink'>here!</a>
             </div>
             <div className='signInPageDiv' >
                 <img className='bugLogo' src={BugLogo} alt='BugLogo' />
-                <form className='signInForm' onSubmit={handleSubmit} >
+                <form className='signInForm' >
                     
                     <h1 >
                         Sign-In
@@ -70,15 +31,7 @@ export default function SignInPage() {
                     
                     <div className='lineDiv' />
                     
-                    <label htmlFor='email' >Email</label>
-                    <input className='input' type='text' id='email' required ref={emailRef} autoComplete='off' />
-                    
-                    <label htmlFor='password' >Password</label>
-                    <input className='input' type='password' id='password' required ref={passwordRef} autoComplete='off' />
-
-                    {error && <div className='signInPageErrorDiv'> {error} </div>}
-                    
-                    <button type='submit' >
+                    <button type='submit' onClick={signIn}>
                         Sign-In
                     </button>
 
