@@ -117,7 +117,7 @@ export default function ProjectDetailsPage() {
                                     return (
                                         <div className='currentMemberDiv' key={member.memberUID} style={{maxWidth: '400px'}}> 
                                             <div className='memberNameDiv'>
-                                                <h2>{member.memberName}</h2>
+                                                <h2>{member.displayName}</h2>
                                                 <div className='deleteMember'> 
                                                     <img src={PersonIcon} alt='personIcon'></img>
                                                 </div>
@@ -195,7 +195,7 @@ export default function ProjectDetailsPage() {
                                             </div>
                                             <div className='assignedMemberDiv'>
                                                 <h4>
-                                                    {bug.assignedMember ? `Assigned To: ${bug.assignedMember}` : 'No assigned member!'}
+                                                    {bug.assignedMember && bug.assignedMemberEmail === currentUser.email? `Assigned To: ${bug.assignedMemberEmail} (you!)` : 'No assigned member!'}
                                                 </h4>
                                             </div>
                                         </div>

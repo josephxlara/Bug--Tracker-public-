@@ -2035,10 +2035,11 @@ body {
 .editBugItems { 
     height: 100%;
     width: 95%;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     display: flex;
     z-index: 1;
+    position: relative;
 }
 
 .editBugItems h1 {
@@ -2046,24 +2047,20 @@ body {
     font-size: 1.6rem;
     font-family: $primaryQuicksand;
     color: $primaryWhite;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
 }
 
-.toBugDetailsLink {
-    text-decoration: none;
-    color: $primaryWhite;
-    cursor: pointer;
-    font-family: $primaryQuicksand;
-    font-size: 1.6rem;
-    color: $primaryWhite;
-}
-
-.toBugDetailsLink:hover {
-    text-decoration: underline;
-}
-
-.toDashboardBug {
+.toDashboardBug1 {
     height: 44px;
     display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
 .editBugMarginDiv {
@@ -2109,6 +2106,7 @@ body {
 
 .editBugFormDiv {
     @include flexCenter();
+    width: 400px;
     top: 164px;
     position: absolute;
 }

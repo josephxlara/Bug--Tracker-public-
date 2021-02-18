@@ -50,10 +50,9 @@ export default function PropProvider(props) {
         const newUID = nanoid(5);
         
         const firstMemberData = {
-            memberName: currentUser.displayName,
+            displayName: currentUser.displayName,
             dateAddedToProject: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`,
             memberUID: currentUser.uid,
-            assignedBug: null,
             memberEmail: currentUser.email
         }
 

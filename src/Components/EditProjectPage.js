@@ -41,7 +41,6 @@ export default function EditProjectPage() {
     // State constants for project's bugs
     const [currentProjectsBugs, setCurrentProjectsBugs] = useState();
     // State constants for the add member form
-    const [addMemberFormMemberName, setAddMemberFormMemberName] = useState('');
     const [memberUID, setMemberUID] = useState('');
     // State constants for the add bug form
     const [formBugName, setFormBugName] = useState('');
@@ -71,13 +70,20 @@ export default function EditProjectPage() {
         setCurrentProjectsBugs(axiosGetCurrentProjectDataData.projectBugs ? Object.values(axiosGetCurrentProjectDataData.projectBugs) : []);
         
         // Axios API call to get project's current active users
-        const axiosGetCurrentUsers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users.json`)
-        const listOfProjectMembers = Object.keys(axiosGetCurrentProjectData.data.projectMembers)
-        const listOfCurrentUsers = Object.values(axiosGetCurrentUsers.data);
-        
+        const getCurrentUsers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users.json`)
+        const currentUsersData = Object.values(getCurrentUsers.data);
+
+        const getCurrentProjectMembers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects/${projectUIDForProjectDetails}/projectMembers.json`);
+        const memberData = Object.keys(getCurrentProjectMembers.data);
+
+        const newUsersData = currentUsersData.map(data => {
+            return data.userData;
+        })
+
         // Filter through the list of the project's active users to exclude the ones that are members of the current project
-        const filteredListOfUsers = listOfCurrentUsers.filter(user => !listOfProjectMembers.includes(user))
-        setActiveUsersFilteredCurrentMembers(filteredListOfUsers);
+        const filteredUsersData = newUsersData.filter(data => !memberData.includes(data.userUID));
+
+        setActiveUsersFilteredCurrentMembers(filteredUsersData);
 
         setLoading(false);
     }
@@ -88,11 +94,15 @@ export default function EditProjectPage() {
     const addMember = async (e) => {
         e.preventDefault();
 
+        const axiosGetMemberUserData = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${memberUID}/userData.json`)
+        const axiosGetMemberUserDataData = axiosGetMemberUserData.data;
+
         // New member data provided for by the user
         const projectMemberData = { 
-            memberName: addMemberFormMemberName,
+            displayName: axiosGetMemberUserDataData.displayName,
             dateAddedToProject: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`,
-            memberUID: memberUID,
+            memberUID: axiosGetMemberUserDataData.userUID,
+            memberEmail: axiosGetMemberUserDataData.userEmail
         }
 
         // Push the newly created member to the current user's database
@@ -126,8 +136,6 @@ export default function EditProjectPage() {
             await axios.put(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${axiosFilterCurrentUsers[i]}/userProjects/${axiosGetCurrentProjectDetails.data.projectUID}.json`, dataToPushToUser);
         }
 
-        setAddMemberFormMemberName('');
-
         fetchDataFromBase();
     }
 
@@ -144,7 +152,7 @@ export default function EditProjectPage() {
             await axios.delete(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentMembersUIDs[i]}/userProjects/${projectUIDForProjectDetails}/projectMembers/${memberUID}.json`)
         }
 
-        // Called due to memberUID being initialized to deleted memeber's UID
+        // Called due to memberUID being initialized to deleted member's UID
         setMemberUID('');
         
         fetchDataFromBase();
@@ -156,6 +164,9 @@ export default function EditProjectPage() {
     const pushNewBug = async (e) => {
         e.preventDefault();
         
+        const axiosGetUserEmail = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${assignBugToMember}.json`);
+        const axiosGetUserEmailData = axiosGetUserEmail.data;
+
         const newUID = nanoid(5);
 
         // New data for new bug provided by user
@@ -167,6 +178,7 @@ export default function EditProjectPage() {
             shortDescription: formShortDescription,
             priority: assignPriority,
             completed: false,
+            assignedMemberEmail: axiosGetUserEmailData.userData.userEmail
         }
 
         // For any bug, we always want to push it to the currentUser's DB, who is the project manager
@@ -270,12 +282,13 @@ export default function EditProjectPage() {
                             <div className='lineDiv' />
                             
                             <label htmlFor='memberUID' >New Member</label>
-                            <select id='memberUID' required onChange={(e) => setMemberUID(e.target.value)}>
+                            <select id='memberUID' required onChange={(e) => {
+                                setMemberUID(e.target.value)}}>
                                 <option value='' hidden id='' />
                                 {
                                     activeUsersFilteredCurrentMembers.map(user => {
                                         return (
-                                            (user.userData.userUID !== currentUser.uid) && <option required value={user.userData.userUID} id={user} key={user.userData.userUID} >{`${user.userData.displayName}... (${user.userData.userEmail})`}</option>
+                                            <option required value={user.userUID} key={user.userEmail}>{`${user.displayName}... (${user.userEmail})`}</option>
                                         )
                                     })
                                 }
@@ -300,7 +313,7 @@ export default function EditProjectPage() {
                                     return (
                                         <div className='memberDiv' key={member.memberUID} style={{maxWidth: '400px'}}> 
                                             <div className='memberNameDiv'>
-                                                <h2 >{member.memberName}</h2>
+                                                <h2 >{member.displayName}</h2>
                                                 <div className='deleteMember'> 
                                                     {!checkIfOwner && <button value={member.memberUID} onClick={(e) => deleteMember(e.target.value)} >Delete</button>}
                                                     <img src={PersonIcon} alt='personIcon'></img>
@@ -363,9 +376,9 @@ export default function EditProjectPage() {
                             <select id='assignMember' required value={assignBugToMember} onChange={(e) => {setAssignBugToMember(e.target.value)}}> 
                                 <option value='' hidden />
                                 {
-                                    currentMembersUIDs.map(user => {
+                                    currentMembersData.map(data => {
                                         return (
-                                                <option value={user} id={user} key={user}>{user}</option>
+                                                <option value={data.memberUID} id={data.memberEmail} key={data.memberUID}>{`${data.displayName}... (${data.memberEmail})`}</option>
                                             )
                                     })
                                 }
@@ -430,7 +443,7 @@ export default function EditProjectPage() {
                                             </div>
                                             <div className='assignedMemberDiv'>
                                                 <h4>
-                                                    {bug.assignedMember && bug.assignedMember === currentUser.uid ? `Assigned To: ${bug.assignedMember} (you!)` : `Assigned To: ${bug.assignedMember}`}
+                                                    {bug.assignedMemberEmail && bug.assignedMemberEmail === currentUser.email ? `Assigned To: ${bug.assignedMemberEmail} (you!)` : `Assigned To: ${bug.assignedMemberEmail}`}
                                                 </h4>
                                             </div>
                                         </div>

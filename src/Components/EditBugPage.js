@@ -54,14 +54,16 @@ export default function EditBugPage() {
         // Axios API call to database to retrieve current bug's data
         const axiosGetBugDetails = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects/${projectUIDForProjectDetails}/projectBugs/${bugUIDForBugDetails}/.json`);
         setBugDetails(axiosGetBugDetails.data);
-
+        
         // Axios APi call to database to retrieve project's current members
         const axiosGetProjectsMembers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects/${projectUIDForProjectDetails}/projectMembers.json`);
         const axiosGetProjectMembersUIDs = Object.keys(axiosGetProjectsMembers.data);
         setProjectMembers(axiosGetProjectMembersUIDs);
 
+        const axiosGetProjectMembersData = Object.values(axiosGetProjectsMembers.data);
+
         // Filter through list of project's current members in order that we don't render the currently assigned member in select option
-        const filteredListMembers = axiosGetProjectMembersUIDs.filter(key => key !== axiosGetBugDetails.data.assignedMember);
+        const filteredListMembers = axiosGetProjectMembersData.filter(key => key.memberUID !== axiosGetBugDetails.data.assignedMember);
         setAssignDifferentMember(filteredListMembers);
 
         setLoading(false);
@@ -111,11 +113,10 @@ export default function EditBugPage() {
         <div className='editBugDiv'>
             <div className='editBugHeader'>
                 <div className='editBugItems'>
-                    <Link to='/dashboard'><img className='toDashboardBug' src={Bug} alt='bugLogo' /></Link>
-                    <h1>
+                    <Link to='/dashboard'><img className='toDashboardBug1' src={Bug} alt='bugLogo' /></Link>
+                    <h1 >
                         {`${bugDetails.bugName} (edit)`}
                     </h1>
-                    <h1><Link className='toBugDetailsLink' to='/bugdetails'>(details)</Link></h1>
                 </div>
             </div>
             <div className='editBugMarginDiv'>
@@ -148,11 +149,11 @@ export default function EditBugPage() {
 
                     <label htmlFor='assignMember'>Assign Different Member</label>
                     <select id='assignMember' onChange={(e) => setAssignedMember(e.target.value)}>
-                    <option value='' hidden >{`Current member: ${bugDetails.assignedMember}`}</option>
+                    <option value='' hidden >{`Assigned To: ${bugDetails.assignedMemberEmail}`}</option>
                         {
                             assignDifferentMember.map(user => {
                                 return (
-                                        <option value={user} key={user}>{user}</option>
+                                        <option value={user.memberUID} key={user.memberUID}>{user.memberEmail}</option>
                                     )
                             })
                         }
