@@ -44,24 +44,17 @@ export default function PropProvider(props) {
         return fireBaseAuthorize.sendPasswordResetEmail(email);
     }
 
-    const updateEmail = (email) => {
-        return currentUser.updateEmail(email);
-    }
-
-    const updatePassword = (password) => {
-        return currentUser.updatePassword(password);
-    }
-
 
     // Database
-    const pushNewProject = async (newProject, managerName) => {
-        const newUID = nanoid(8);
+    const pushNewProject = async (newProject) => {
+        const newUID = nanoid(5);
         
         const firstMemberData = {
-            memberName: managerName,
+            memberName: currentUser.displayName,
             dateAddedToProject: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`,
             memberUID: currentUser.uid,
-            assignedBug: null
+            assignedBug: null,
+            memberEmail: currentUser.email
         }
 
         // Set new project data in database
@@ -75,8 +68,13 @@ export default function PropProvider(props) {
             managerOfProjectUID: currentUser.uid
         })
 
-        // Also push the user's email to the database
-        await fireBaseDatabase.ref(`Users/${currentUser.uid}`).child('userEmail').set(currentUser.email)
+        // Also push the user's email/display name to the database
+        const userData = {
+            userEmail: currentUser.email,
+            displayName: currentUser.displayName,
+            userUID: currentUser.uid
+        }
+        await fireBaseDatabase.ref(`Users/${currentUser.uid}`).child('userData').set(userData)
 
         // important:  add user as a member to their own project
         await axios.put(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects/${newUID}/projectMembers/${currentUser.uid}.json`, firstMemberData);
@@ -97,8 +95,6 @@ export default function PropProvider(props) {
         signIn,
         signOut,
         resetPassword,
-        updateEmail,
-        updatePassword,
         currentUser,
         setCurrentUser,
         loading,

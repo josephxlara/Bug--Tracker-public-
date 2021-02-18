@@ -124,12 +124,17 @@ export default function ProjectDetailsPage() {
                                             </div>
                                             <div className='memberAddedDiv'>
                                                 <h4>
-                                                    {`Added To Project: ${member.dateAddedToProject}`}
+                                                    {`Date Added To Project: ${member.dateAddedToProject}`}
+                                                </h4>
+                                            </div>
+                                            <div className='memberEmailDiv'>
+                                                <h4>
+                                                    {checkIfOwner ? `User Email: ${member.memberEmail} (you!)` : `User Email: ${member.memberEmail}`}
                                                 </h4>
                                             </div>
                                             <div className='memberUIDDiv'>
                                                 <h4>
-                                                    {checkIfOwner ? `UID: ${member.memberUID} (you!)` : `UID: ${member.memberUID}`}
+                                                    {`UID: ${member.memberUID}`}
                                                 </h4>
                                             </div>
                                         </div>

@@ -63,7 +63,7 @@ export default function ForgotPasswordPage() {
                 </button>
 
             </form>
-            <Link className='signUpLink' to='/signinpage'>Back to Sign-In</Link>
+            <Link className='signUpLink' to='/'>Back to Sign In</Link>
         </div>
     )
 }

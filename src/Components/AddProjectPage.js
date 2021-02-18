@@ -24,7 +24,6 @@ export default function AddProjectPage() {
 
     // Constants used to capture user's input in new project form
     const projectNameRef = useRef();
-    const projectManagerNameRef = useRef();
 
     /**
      * * Async function created to push new user-created project to database then reroute user to dashboard
@@ -34,8 +33,7 @@ export default function AddProjectPage() {
 
         try {
             setLoading(true);
-            // Submit project to database
-            await pushNewProject(projectNameRef.current.value, projectManagerNameRef.current.value);
+            await pushNewProject(projectNameRef.current.value);
             history.push('/dashboard');
             setLoading(false);
         } 
@@ -49,7 +47,7 @@ export default function AddProjectPage() {
         <div className='addProjectDiv'>
             <div className='headerDiv'>
                 <Link to='/dashboard' ><img className='bug' style={{top: '2px'}}src={Bug} alt='bug' /></Link>
-                <h2>{currentUser.email}</h2>
+                <h2>{currentUser.displayName}</h2>
             </div>
             <form className='addProjectForm' onSubmit={pushNewProjectToDatabase}>
                     
@@ -58,9 +56,6 @@ export default function AddProjectPage() {
                 </h1>
                 <div className='lineDiv' />
 
-                <label htmlFor='projectManager' >Your Name</label>
-                <input className='input' type='text' id='projectManager' required autoComplete='off' ref={projectManagerNameRef} />
-                
                 <label htmlFor='projectName' >Project Name</label>
                 <input className='input' type='text' id='projectName' required autoComplete='off' ref={projectNameRef} />
 

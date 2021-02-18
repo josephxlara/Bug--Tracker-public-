@@ -1128,7 +1128,7 @@ body {
     border-color: $primaryWhite;
     background-color: $primaryPurple;
     width: 100%;
-    height: 100px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -1487,7 +1487,7 @@ body {
 .currentMembersDiv {
     width: 80%;
     position: absolute;
-    margin-top: 468px;
+    margin-top: 378px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1519,7 +1519,7 @@ body {
     border-color: $primaryWhite;
     background-color: $primaryPurple;
     width: 100%;
-    height: 100px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -1585,6 +1585,21 @@ body {
 }
 
 .memberAddedDiv h4 {
+    color: $primaryWhite;
+    font-family: $primaryQuicksand;
+    font-weight: 500;
+    font-size: .8rem;
+}
+
+.memberEmailDiv {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    order: 2;
+    padding: 0 0 0 12px;
+}
+
+.memberEmailDiv h4 {
     color: $primaryWhite;
     font-family: $primaryQuicksand;
     font-weight: 500;
@@ -2376,11 +2391,6 @@ body {
     @include flexCenter();
     height: 100vh;
     width: 100%;
-}
-
-.profilePageForm {
-    width: 360px;
-    display: flex;
 }
 
 // Footer

@@ -287,7 +287,7 @@ export default function DashboardPage() {
 
                                             <td>{project.dateCreated}</td>
 
-                                            <td>{project.completed ? <img alt='checkMark' style={{height: '28px'}} src={CheckMark} /> : <img alt='checkMark' style={{height: '28px'}} src={XMark} />}</td>
+                                            <td>{project.completed ? <img alt='checkMark' style={{height: '24px'}} src={CheckMark} /> : <img alt='checkMark' style={{height: '24px'}} src={XMark} />}</td>
                                             
                                             <td>{project.projectUID ? project.projectUID : null}</td>
 

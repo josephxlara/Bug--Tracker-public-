@@ -26,10 +26,7 @@ export default function EditProjectPage() {
      * * State constants from context provider:
      * * currentUser --> main purpose: a prop that is used to initialize the whole project to the current user's info/data
      * * projectIDForProjectDetails --> only purpose: a constant which contains the correct UID for the project that we are currently editing
-     * * bugIDForBugDetails --> only purpose: a constant which contains the correct UID for the bug that we are currently editing
      * * setBugIDForBugDetails --> only purpose: a constant which is set to the current bug's UID
-     * * setBugNameForChatFeature --> set state constant to store bug name as prop
-     * 
      */
     const { currentUser, projectUIDForProjectDetails, setBugUIDForBugDetails } = useContext(bugTrackerPropProvider)
     
@@ -76,7 +73,7 @@ export default function EditProjectPage() {
         // Axios API call to get project's current active users
         const axiosGetCurrentUsers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users.json`)
         const listOfProjectMembers = Object.keys(axiosGetCurrentProjectData.data.projectMembers)
-        const listOfCurrentUsers = Object.keys(axiosGetCurrentUsers.data);
+        const listOfCurrentUsers = Object.values(axiosGetCurrentUsers.data);
         
         // Filter through the list of the project's active users to exclude the ones that are members of the current project
         const filteredListOfUsers = listOfCurrentUsers.filter(user => !listOfProjectMembers.includes(user))
@@ -272,16 +269,13 @@ export default function EditProjectPage() {
                             </h1>
                             <div className='lineDiv' />
                             
-                            <label htmlFor='memberName'>Member Name</label>
-                            <input type='text' id='memberName' value={addMemberFormMemberName} autoComplete='off' required onChange={(e) => setAddMemberFormMemberName(e.target.value)} />
-                            
-                            <label htmlFor='memberUID' >Member UID</label>
-                            <select id='memberUID' value={memberUID} required onChange={(e) => setMemberUID(e.target.value)}>
+                            <label htmlFor='memberUID' >New Member</label>
+                            <select id='memberUID' required onChange={(e) => setMemberUID(e.target.value)}>
                                 <option value='' hidden id='' />
                                 {
                                     activeUsersFilteredCurrentMembers.map(user => {
                                         return (
-                                            <option required value={user} id={user} key={user} >{user}</option>
+                                            (user.userData.userUID !== currentUser.uid) && <option required value={user.userData.userUID} id={user} key={user.userData.userUID} >{`${user.userData.displayName}... (${user.userData.userEmail})`}</option>
                                         )
                                     })
                                 }
@@ -314,12 +308,17 @@ export default function EditProjectPage() {
                                             </div>
                                             <div className='memberAddedDiv'>
                                                 <h4>
-                                                    {`Added To Project: ${member.dateAddedToProject}`}
+                                                    {`Date Added To Project: ${member.dateAddedToProject}`}
+                                                </h4>
+                                            </div>
+                                            <div className='memberEmailDiv'>
+                                                <h4>
+                                                    {checkIfOwner ? `User Email: ${member.memberEmail} (you!)` : `User Email: ${member.memberEmail}`}
                                                 </h4>
                                             </div>
                                             <div className='memberUIDDiv'>
                                                 <h4>
-                                                    {checkIfOwner ? `ID: ${member.memberUID} (you!)` : `ID: ${member.memberUID}`}
+                                                    {`UID: ${member.memberUID}`}
                                                 </h4>
                                             </div>
                                         </div>
