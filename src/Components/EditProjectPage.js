@@ -73,9 +73,11 @@ export default function EditProjectPage() {
         const getCurrentUsers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users.json`)
         const currentUsersData = Object.values(getCurrentUsers.data);
 
+        // Axios API call to get project's current members
         const getCurrentProjectMembers = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects/${projectUIDForProjectDetails}/projectMembers.json`);
         const memberData = Object.keys(getCurrentProjectMembers.data);
 
+        // return userData of this JSON object
         const newUsersData = currentUsersData.map(data => {
             return data.userData;
         })
