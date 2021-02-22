@@ -1,4 +1,5 @@
 // General Imports
+import axios from 'axios';
 import React, { useContext, useState, useRef } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -17,7 +18,9 @@ export default function AddProjectPage() {
      */
     const { currentUser, pushNewProject } = useContext(bugTrackerPropProvider);
 
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [projectName, setProjectName] = useState('');
     
     // Constant used to push user back to dashboard upon submission of new project form
     const history = useHistory();
@@ -31,15 +34,24 @@ export default function AddProjectPage() {
     const pushNewProjectToDatabase = async (e) => {
         e.preventDefault();
 
-        try {
+        const getUsersProjectsNames = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects.json`)
+
+        const getUsersProjectsNamesData = Object.values(getUsersProjectsNames.data);
+
+        const projectsNames = getUsersProjectsNamesData.map(data => {
+            return data.projectName;
+        })
+
+        if (projectsNames.includes(projectName)) {
+            setError('Project exists already!')
+        } 
+
+        else {
             setLoading(true);
-            await pushNewProject(projectNameRef.current.value);
+            setProjectName('');
+            await pushNewProject(projectName);
             history.push('/dashboard');
             setLoading(false);
-        } 
-        
-        catch {
-            return null;
         }
     }
 
@@ -57,7 +69,9 @@ export default function AddProjectPage() {
                 <div className='lineDiv' />
 
                 <label htmlFor='projectName' >Project Name</label>
-                <input className='input' type='text' id='projectName' required autoComplete='off' ref={projectNameRef} />
+                <input className='input' type='text' id='projectName' required autoComplete='off' value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+
+                {error && <div className='signInPageErrorDiv'> {error} </div>}
 
                 <button className='addProjectButton' type='submit' >
                     Add Project
