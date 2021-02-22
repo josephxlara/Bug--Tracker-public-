@@ -85,7 +85,7 @@ export default function PropProvider(props) {
         fireBaseAuthorize.onAuthStateChanged(user => {
             setCurrentUser(user);
 
-            history.push('/dashboard');
+            history.push('/dashboard')
         })
     }, [])
 

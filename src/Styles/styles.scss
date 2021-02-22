@@ -399,7 +399,6 @@ body {
 }
 
 .moreInfoDropDownHeader {
-    @include itemInProgress();
     background-color: $primaryWhite;
     width: 100%;
     height: 50px;
