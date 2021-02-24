@@ -33,7 +33,9 @@ export default function AddProjectPage() {
         
         // API call to database to get user's current projects.
         const getUsersProjectsNames = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects.json`)
-        const getUsersProjectsNamesData = Object.values(getUsersProjectsNames.data);
+        
+        // Ternary operator to ensure that we don't try Object.values(null)
+        const getUsersProjectsNamesData = Object.values(getUsersProjectsNames.data ? getUsersProjectsNames.data : '');
 
         const projectsNames = getUsersProjectsNamesData.map(data => {
             return data.projectName;
