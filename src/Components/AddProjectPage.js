@@ -1,6 +1,6 @@
 // General Imports
 import axios from 'axios';
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 // Context Import
@@ -25,23 +25,21 @@ export default function AddProjectPage() {
     // Constant used to push user back to dashboard upon submission of new project form
     const history = useHistory();
 
-    // Constants used to capture user's input in new project form
-    const projectNameRef = useRef();
-
     /**
      * * Async function created to push new user-created project to database then reroute user to dashboard
      */
     const pushNewProjectToDatabase = async (e) => {
         e.preventDefault();
-
+        
+        // API call to database to get user's current projects.
         const getUsersProjectsNames = await axios.get(`https://bug--tracker---developer-default-rtdb.firebaseio.com/Users/${currentUser.uid}/userProjects.json`)
-
         const getUsersProjectsNamesData = Object.values(getUsersProjectsNames.data);
 
         const projectsNames = getUsersProjectsNamesData.map(data => {
             return data.projectName;
         })
 
+        // Notify user that that project exists already
         if (projectsNames.includes(projectName)) {
             setError('Project exists already!')
         } 
