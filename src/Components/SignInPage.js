@@ -64,7 +64,6 @@ export default function SignInPage() {
                     {error && <div className='signInPageErrorDiv'> {error} </div>}
 
                 </form>
-                <Link className='signInLink' to='forgotpassword'>Forgot your password?</Link>
             </div>
             <div className='footerDiv' >
                 <p >

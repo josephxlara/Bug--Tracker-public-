@@ -14,7 +14,6 @@ import AddProjectPage from './Components/AddProjectPage'
 import LoadingPage from './Components/LoadingPage';
 import ProjectDetailsPage from './Components/ProjectDetailsPage';
 import EditProjectPage from './Components/EditProjectPage';
-import ForgotPasswordPage from './Components/ForgotPassword';
 import EditBugPage from './Components/EditBugPage';
 import ProfilePage from './Components/ProfilePage';
 
@@ -46,7 +45,6 @@ function App() {
               <PrivateRoute exact path='/editbug' component={EditBugPage} />
               <PrivateRoute exact path='/profile' component={ProfilePage} />
               <Route exact path='/' component={SignInPage} />
-              <Route exact path='/forgotpassword' component={ForgotPasswordPage} />
               <Route exact path='*' component={() => {'404 PAGE NOT FOUND'}} />
             </Switch>
           </PropProvider>
