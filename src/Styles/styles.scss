@@ -94,16 +94,24 @@ body {
 .bugLogo {
     display: flex;
     height: 2.4rem;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    bottom: 300px;
+    margin: auto;
 }
 
 .signInForm {
-    width: 100%;
+    width: 300px;
+    height: 160px;
     background-color: $primaryPurple;
     border: 2px;
     border-color: $primaryWhite;
     border-style: solid;
     border-radius: 4px;
     padding: 20px;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
 }
 
 .signInForm h1 {
