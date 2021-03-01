@@ -29,19 +29,19 @@ export default function PropProvider(props) {
 
     // User Authentication Methods
     const signIn = async () => {
-        return await fireBaseAuthorize.signInWithPopup(googleProvider);
+       return await fireBaseAuthorize.signInWithPopup(googleProvider);
     }
 
-    const signUp = (email, password) => {
-        return fireBaseAuthorize.createUserWithEmailAndPassword(email, password);
+    const signUp = async (email, password) => {
+        return await fireBaseAuthorize.createUserWithEmailAndPassword(email, password);
     }
     
-    const signOut = () => {
-        return fireBaseAuthorize.signOut();
+    const signOut = async () => {
+        return await fireBaseAuthorize.signOut();
     }
 
-    const resetPassword = (email) => {
-        return fireBaseAuthorize.sendPasswordResetEmail(email);
+    const resetPassword = async (email) => {
+        return await fireBaseAuthorize.sendPasswordResetEmail(email);
     }
 
 
@@ -84,8 +84,6 @@ export default function PropProvider(props) {
     useEffect(() => {
         fireBaseAuthorize.onAuthStateChanged(user => {
             setCurrentUser(user);
-
-            history.push('/dashboard')
         })
     }, [])
 
